@@ -1,0 +1,20 @@
+#version 150
+
+in vec2 textureCoords;
+
+out vec4 out_Colour;
+
+uniform sampler2D colourTexture;
+uniform sampler2D highlightTexture;
+
+void main(void){
+
+	vec4 sceneColor = texture(colourTexture, textureCoords);
+	vec4 highlightColor = texture(highlightTexture, textureCoords);
+	
+	out_Colour = sceneColor + highlightColor * 1.0;
+	
+	//float average = out_Colour.r + out_Colour.g + out_Colour.b;
+	//average = average / 3;
+	//out_Colour = vec4(average, average, average, 1);
+}
